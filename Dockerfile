@@ -17,6 +17,18 @@ RUN apt-get update && \
       vim \
       php5-mysql \
       gearman \
+      mcrypt \
+      libmcrypt-dev \
+      libx11-dev \
+      strace \
+      libc6 \
+      lib32z1 \
+      lib32ncurses5 \
+      libstdc++5 \
+      curl \
+      libcurl4-gnutls-dev \
+      tree \
+      ftp \
       libgearman-dev && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get autoremove -y && \
@@ -32,6 +44,9 @@ RUN docker-php-ext-install \
       pdo \
       pdo_mysql \
       zip \
+      mcrypt \
+      json \
+      curl \
       soap
 
 RUN pecl install channel://pecl.php.net/xdebug-2.4.0 \
@@ -41,3 +56,4 @@ RUN echo 'zend_extension = /usr/local/lib/php/extensions/no-debug-non-zts-201005
     echo 'extension = gearman.so' >> /usr/local/etc/php/php.ini
 
 RUN a2enmod rewrite
+
